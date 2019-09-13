@@ -24,6 +24,7 @@ def cuantasletras(nombre):
 
 @app.route("/suma/<numero>")
 def suma(numero):
+<<<<<<< HEAD
     if "suma" not in session:
         session ["suma"] = 0
     suma = session ["suma"]
@@ -41,6 +42,13 @@ def authenticate():
     else:
         return "Sorry " +username+" you are not a valid user"
 
+=======
+    suma = session ["suma"]
+    suma = suma + int (numero)
+    session [suma] = suma
+    return str(suma)
+
+>>>>>>> 14aff695d50dccbfdc779e50c1615a1be1a6a628
 @app.route('/users', methods = ['POST'])
 def create_user():
     c =  json.loads(request.form['values'])
