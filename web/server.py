@@ -24,7 +24,6 @@ def cuantasletras(nombre):
 
 @app.route("/suma/<numero>")
 def suma(numero):
-<<<<<<< HEAD
     if "suma" not in session:
         session ["suma"] = 0
     suma = session ["suma"]
@@ -32,23 +31,34 @@ def suma(numero):
     session ["suma"] = suma
     return str(suma)
 
+@app.route("/usuarios", methods = ["GET"])
+def todos_los_usuarios():
+    db_session=db.getSession(engine)
+    users= db_session.query(entities.User);
+    response = "";
+    for user in users:
+        response+= user.username +" - "
+    return response;
+
+
+
 @app.route("/authenticate", methods = ["POST"])
 def authenticate():
     username= request.form["username"]
     password =request.form["password"]
-    if username == "kosterling" and password == "12345":
+    db_session = db.getSession(engine)
+    user = db_session.query(entities.User).filter(
+        entities.User.username == username
+    ).filter(
+        entities.User.password ==password
+    ).first()
+
+    if user != None:
         session ["usuario"] = username;
         return "Welcome " + username;
     else:
         return "Sorry " +username+" you are not a valid user"
 
-=======
-    suma = session ["suma"]
-    suma = suma + int (numero)
-    session [suma] = suma
-    return str(suma)
-
->>>>>>> 14aff695d50dccbfdc779e50c1615a1be1a6a628
 @app.route('/users', methods = ['POST'])
 def create_user():
     c =  json.loads(request.form['values'])
