@@ -1,7 +1,7 @@
 
 
 function sendMessage(){
-    alert("Happy Birthday Bruno uwu");
+    alert("WoW");
 }
 
 function get_all_users(){
