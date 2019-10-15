@@ -10,12 +10,30 @@
 
 </head>
 <body>
-    HOLA SOY UN HTML SIMPLE
-    <button type="button" class="btn btn-primary" onclick= "sendMessage()">Send</button>
-    AEA
-    COLUMNA 1
-    <button type="button" class="btn btn-primary" onclick= "get_all_users()">Get Users</button>
-    <div id="users"> </div>
+    <a href="/logout">Logout</a>
+    <table width="100%" border="1px">
+        <tr>
+        <td width="30%">
+            <div id="current">
+                <label id="current_username"></label>
+                <button type="button" class="btn btn-primary" onclick="get_current()" >Get current users</button>
+            </div>
+            <div id="users"></div>
+        </td>
 
+        <td width="70%">
+            <div id="boxMessage">
+            </div>
+
+            <div>
+                <input type="text" size="200" id="txtMessage">
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
