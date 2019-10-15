@@ -55,6 +55,7 @@ def authenticate():
 
     if user != None:
         session ["usuario"] = username;
+        session['logged_user']= user.id;
         return "Welcome " + username;
     else:
         return "Sorry " +username+" you are not a valid user"
