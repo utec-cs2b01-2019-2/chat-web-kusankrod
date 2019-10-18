@@ -11,10 +11,20 @@ function get_current(){
 }
 
 function getMessages(user_from_id, user_to_id){
-    alert("Voy a traer los mensajes entre"+ user_from_id+" y " + user_to_id);
+    alert("Voy a traer los mensajes entre" + user_from_id+ " y " + user_to_id);
     var url = "/messages/"+user_from_id+"/"+user_to_id;
     $.getJSON(url, function(data){
+var i =0;
+    $.each(data, function(){
 
+        user_to = data[i]["id"];
+        e = '<div class="alert" role="alert" >';
+        e = e+"<div>"+data[i]['content']+"</div>";
+        e = e+"</div>";
+        $("<div/>", {html:e}).appendTo("#boxMessage");
+
+        i=i+1;
+    });
     });
     }
 
